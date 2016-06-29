@@ -1,0 +1,1 @@
+include 'principal-api', 'principal-service', 'principal-test'

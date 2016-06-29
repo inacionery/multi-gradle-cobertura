@@ -1,0 +1,40 @@
+subprojects {
+    apply plugin: 'java' 
+   
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+}
+
+buildscript {
+  repositories {
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+  dependencies {
+    classpath "net.saliman:gradle-cobertura-plugin:2.3.2"
+  }
+}
+
+project(':principal-service') {
+  dependencies {
+    compile project(':principal-api')   
+  }
+}
+
+project(':principal-test') {
+  apply plugin: "net.saliman.cobertura"
+
+  dependencies {
+    compile project(':principal-api')
+    compile project(':principal-service')
+    testCompile 'junit:junit:4.11'
+  }
+
+  cobertura {
+      coverageFormats = [ 'xml', 'html' ]   
+  }
+}
+
