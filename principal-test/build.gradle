@@ -1,0 +1,5 @@
+ dependencies {
+    compile project(':principal-api')
+    compile project(':principal-service')
+    testCompile 'junit:junit:4.11'
+  }
